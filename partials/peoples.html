@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <h1>Your Telephone Book</h1>
+
+        <table>
+            <input type="text" ng-model="nameFilter" placeholder="Search..."/>
+            <tr>
+                <td>ID</td>  <td>Image</td> <td ng-click="standardOrder('name')">Name</td> <td ng-click="standardOrder('surname')">Surname</td> <td>Phone number</td> <td>Adres</td>
+            </tr>
+
+
+            <tr ng-repeat="people in bookList | orderBy: orderByData | filter: searchPeople">
+                <td>{{$index + 1}}</td>
+                <td><img src="img/people/{{people.number}}.png" /></td>
+                <td>{{(people.name)}}</td>
+                <td>{{people.surname}}</td>
+                <td>{{people.telephone}}</td>
+                <td>{{people.adres}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

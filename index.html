@@ -1,0 +1,46 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Telephone Book App</title>
+    <link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+</head>
+
+<body ng-app="telephoneBookApp"  ng-Controller="bookController">
+
+<!--<ng-view></ng-view>-->
+<!---->
+<div class="container">
+    <div class="row">
+        <h1>Your Telephone Book</h1>
+
+<table>
+    <input type="text" ng-model="nameFilter" placeholder="Search..."/>
+    <tr>
+        <td>ID</td>  <td>Image</td> <td ng-click="standardOrder('name')">Name</td> <td ng-click="standardOrder('surname')">Surname</td> <td>Phone number</td> <td>Adres</td>
+    </tr>
+
+
+    <tr ng-repeat="people in bookList | orderBy: orderByData | filter: searchPeople">
+        <td>{{$index + 1}}</td>
+        <td><img src="img/people/{{people.number}}.png" /></td>
+        <td>{{(people.name)}}</td>
+    <td>{{people.surname}}</td>
+        <td>{{people.telephone}}</td>
+<td>{{people.adres}}</td>
+    </tr>
+</table>
+    </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controller.js"></script>
+</body>
+</html>

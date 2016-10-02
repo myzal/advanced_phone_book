@@ -1,0 +1,20 @@
+[
+{
+  "name": "John",
+  "surname": "Bravo",
+  "telephone": 31312123,
+  "adres": "Mickiewicza Warszawa"
+},
+{
+"name": "Jan",
+"surname": "Kowalski",
+"telephone": 312312312,
+"adres": "Wyszynskiego Szczecin"
+},
+{
+"name": "Janusz",
+"surname": "Nowak",
+"telephone": 3123123123,
+"adres": "Wyspianskiego Olsztyn"
+}
+]
