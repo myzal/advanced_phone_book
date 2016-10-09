@@ -10,7 +10,7 @@
                 <label for="name" class="col-sm-2">Name:</label>
 
                 <div class="col-sm-6">
-                    <input type="text" id="name" class="form-control" ng-model="people.name">
+                    <p class="form-control-static" editPeople="people.name">
                 </div>
             </div>
 
@@ -19,7 +19,8 @@
                 <label for="surname" class="col-sm-2">Surname:</label>
 
                 <div class="col-sm-6">
-                    <input type="text" id="surname" class="form-control"  ng-model="people.surname">
+                    <p class="form-control-static" editPeople="people.surname">
+
                 </div>
             </div>
 
@@ -27,7 +28,7 @@
                 <label for="telephone" class="col-sm-2">Telephone:</label>
 
                 <div class="col-sm-6">
-                    <input type="text" id="telephone" class="form-control" ng-model="people.telephone">
+                    <p class="form-control-static" editPeople="people.telephone">
                 </div>
             </div>
         </div>
@@ -36,8 +37,7 @@
                 <label for="adres" class="col-sm-2">Adres:</label>
 
                 <div class="col-sm-6">
-
-                    <input type="text" id="adres" class="form-control" ng-model="people.adres">
+                    <p class="form-control-static" editPeople="people.adres">
                 </div>
             </div>
             <div class="form-group">
@@ -45,6 +45,6 @@
                     <input type="submit" class="btn btn-primary" value="Add Contact">
                 </div>
             </div>
-            </div>
+        </div>
     </div>
 </form>

@@ -1,7 +1,11 @@
 /**
  * Created by Mateusz on 25.09.2016.
  */
-angular.module('telephoneBookApp', ['telephoneBookApp.controllers', 'ngRoute'])
+angular.module('telephoneBookApp', [
+        'telephoneBookApp.services',
+    'telephoneBookApp.controllers',
+    'ngRoute'
+])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.
             when("/", {

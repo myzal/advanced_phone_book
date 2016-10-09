@@ -5,42 +5,33 @@
 
 
 
-angular.module('telephoneBookApp.controllers',[])
+angular.module('telephoneBookApp.controllers', [])
 
-    /* Kontroler  bookController*/
+    /* Controller  bookController*/
 
 
-    .controller('bookController', function($scope,$http){
+    .controller('bookController', function ($scope, bookList, $http) {
+        $scope.bookList = bookList.get();
 
-    //$http.get('js/test.json').then(function(data) {
-    //    $scope.bookList = data;
-    //}),
+        $scope.delete = function (index) {
+            contacts.destroy(index);
+        };
+        $scope.searchPeople = function (people) {
+            var keyword = new RegExp($scope.nameFilter, 'i');
+            return !$scope.nameFilter || keyword.test(people.name) || keyword.test(people.surname);
+        };
+        $scope.standardOrder = function (people) {
+            $scope.orderByData = people;
+        };
+    })
 
-        $scope.bookList=[
-           {
-               name: 'John',
-               surname: 'Bravo',
-               telephone: 123131,
-               adres: 'Mickiewicza Warszawa'
-           },
-         {
-               name: 'Jan',
-               surname: 'Kowalski',
-               telephone: 323232,
-               adres: 'Wyszynskiego Szczecin'
-           },
-        {
-               name: 'Janusz',
-               surname: 'Nowak',
-               telephone: 123131231,
-               adres: 'Wyspianskiego Olsztyn'
-           }
-   ]
-    $scope.searchPeople = function (people) {
-        var keyword = new RegExp($scope.nameFilter , 'i');
-        return !$scope.nameFilter  || keyword.test(people.name) || keyword.test(people.surname);
-    };
-$scope.standardOrder=function(people){
-    $scope.orderByData=people;
-};
-});
+    /* Controller  newPeople */
+
+    .controller('newPeople', function ($scope, booklist) {
+            $scope.submit = function () {
+booklist.set($scope.people);
+                $scope.people=null;
+                $scope.added=true;
+            }
+        }
+    );
