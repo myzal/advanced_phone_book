@@ -1,0 +1,14 @@
+<div ng-hide="editor.showing">
+    <span ng-bind-html="value | paragraph"></span>
+    <button class="btn btn-default btn-xs" ng-click="toggleEditor()">Edytuj</button>
+</div>
+<div ng-show="editor.showing">
+    <div ng-if="field == 'textarea'">
+        <textarea ng-model="editor.value" class="form-control"></textarea>
+    </div>
+    <div ng-if="field != 'textarea'">
+        <input type="{{field}}" ng-model="editor.value" class="form-control">
+    </div>
+</div>
+<button class="btn btn-success bts-xs" ng-click="save()">Zapisz</button>
+<button class="btn btn-default btn-xs" ng-click="toggleEditor()"></button>

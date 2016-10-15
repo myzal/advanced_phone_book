@@ -29,9 +29,54 @@ angular.module('telephoneBookApp.controllers', [])
 
     .controller('newPeople', function ($scope, booklist) {
             $scope.submit = function () {
-booklist.set($scope.people);
-                $scope.people=null;
-                $scope.added=true;
+                booklist.set($scope.people);
+                $scope.people = null;
+                $scope.added = true;
             }
         }
-    );
+    )
+
+    /* Index Controller */
+
+    .controller('index',function($scope)
+    {
+$scope.bookList=bookList.get();
+$scope.delete = function(index){
+
+    bookList.destroy(index);
+
+}
+
+
+    })
+
+
+    .directive('editPeople', function () {
+        return {
+            restrict: 'AE',
+            templateUrl: '/partials/editable.html',
+            scope: {
+                value: '=editPeople',
+                field: '@fieldType',
+                controller: function ($scope) {
+                    $scope.editor = {
+                        showing: false,
+                        value: $scope.value
+                    };
+                        $scope.toggleEditor = function () {
+                            $scope.editor.showing = !$scope.editor.showing;
+                            $scope.field = ($scope.field) ? $scope.field : 'text';
+
+
+                        };
+                    $scope.save = function () {
+                        $scope.value = $scope.editor.value;
+                        $scope.toggleEditor();
+
+                    };
+
+
+                }
+            }
+        }
+    });

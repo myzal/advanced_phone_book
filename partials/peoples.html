@@ -15,5 +15,11 @@
         <td>{{people.surname}}</td>
         <td>{{people.telephone}}</td>
         <td>{{people.adres}}</td>
+        <td>
+            <a href="#/peoples/{{$index}}" class="btn btn-default btn-xs">Wyświetl</a>
+            <button class="btn btn-danger btn-xs" ng-click="delete($index)">Usuń</button>
+        </td>
     </tr>
+
+
 </table>

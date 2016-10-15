@@ -21,10 +21,10 @@ angular.module('telephoneBookApp', [
             })
             .when("/peoples/:id", {
                 controller: 'bookController',
-                templateUrl: 'partials/peoples.html'
+                templateUrl: 'partials/showPeople.html'
             })
 
 
-            .otherwise({redirectTo: '/peoples'});
+            .otherwise({redirectTo: '/'});
         //$locationProvider.html5Mode(true)
     });
