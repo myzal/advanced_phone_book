@@ -5,78 +5,76 @@
 
 
 
-angular.module('telephoneBookApp.controllers', [])
+angular.module('telephoneBookApp.controllers', ['ngRoute','ngSanitize'])
 
     /* Controller  bookController*/
+.controller('bookController', function ($scope, bookList, $http) {
+    $scope.bookList = bookList.get();
 
+    $scope.searchPeople = function (people) {
+        var keyword = new RegExp($scope.nameFilter, 'i');
+        return !$scope.nameFilter || keyword.test(people.name) || keyword.test(people.surname);
+    };
+    $scope.standardOrder = function (people) {
+        $scope.orderByData = people;
+    };
+    $scope.delete = function(index){
+        bookList.destroy(index);
+    }
 
-    .controller('bookController', function ($scope, bookList, $http) {
-        $scope.bookList = bookList.get();
+})
 
-        $scope.delete = function (index) {
-            contacts.destroy(index);
-        };
-        $scope.searchPeople = function (people) {
-            var keyword = new RegExp($scope.nameFilter, 'i');
-            return !$scope.nameFilter || keyword.test(people.name) || keyword.test(people.surname);
-        };
-        $scope.standardOrder = function (people) {
-            $scope.orderByData = people;
-        };
-    })
-
-    /* Controller  newPeople */
-
-    .controller('newPeople', function ($scope, booklist) {
+/* Controller  newPeople */
+    .controller('newPeople', function ($scope, bookList) {
             $scope.submit = function () {
-                booklist.set($scope.people);
+                bookList.set($scope.people);
                 $scope.people = null;
-                $scope.added = true;
+                $scope.submitSuccess = true;
             }
         }
     )
 
-    /* Index Controller */
-
-    .controller('index',function($scope)
-    {
-$scope.bookList=bookList.get();
-$scope.delete = function(index){
-
-    bookList.destroy(index);
-
-}
-
+    /* Controller  showPeople */
+    .controller('showPeople', function($scope, $routeParams, bookList){
+        $scope.people = bookList.find($routeParams.id);
 
     })
-
-
     .directive('editPeople', function () {
         return {
             restrict: 'AE',
-            templateUrl: '/partials/editable.html',
+            templateUrl: 'partials/editPeople.html',
             scope: {
                 value: '=editPeople',
-                field: '@fieldType',
-                controller: function ($scope) {
-                    $scope.editor = {
-                        showing: false,
-                        value: $scope.value
-                    };
-                        $scope.toggleEditor = function () {
-                            $scope.editor.showing = !$scope.editor.showing;
-                            $scope.field = ($scope.field) ? $scope.field : 'text';
+                field: '@fieldType'
+            },
+            controller: function ($scope) {
+                $scope.field = ($scope.field) ? $scope.field : 'text';
 
+                $scope.editor = {
+                    showing: false,
+                    value: $scope.value
+                };
 
-                        };
-                    $scope.save = function () {
-                        $scope.value = $scope.editor.value;
-                        $scope.toggleEditor();
+                $scope.toggleEditor = function(){
+                    $scope.editor.showing = !$scope.editor.showing;
+                    $scope.editor.value = $scope.value;
+                };
 
-                    };
+                $scope.save = function(){
+                    $scope.value = $scope.editor.value;
+                    $scope.toggleEditor();
+                };
 
-
-                }
             }
+
         }
+    })
+    /* Filter paragraph */
+    .filter('paragraph', function(){
+
+        return function(input){
+            return input.replace(/\n/g, '<br />');
+        };
     });
+
+

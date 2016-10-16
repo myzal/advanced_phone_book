@@ -2,7 +2,11 @@
     <h1>Add Contact</h1>
 </div>
 
-<form class="form-horizontal">
+<div class="alert alert-success" ng-show="submitSuccess">
+   New contact was added.
+</div>
+
+<form class="form-horizontal" ng-submit="submit()">
     <div class="row">
         <div class="col-sm-6">
 
