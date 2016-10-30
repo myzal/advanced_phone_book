@@ -1,7 +1,8 @@
 /**
  * Created by Mateusz on 25.09.2016.
  */
-angular.module('telephoneBookApp', [ 'telephoneBookApp.services','telephoneBookApp.controllers','ngRoute', 'ngSanitize'
+angular.module('telephoneBookApp', [ 'telephoneBookApp.services','telephoneBookApp.controllers','ngRoute', 'ngSanitize',
+    'ngResource', 'ngFileUpload'
 ])
     .config(function ($routeProvider) {
         $routeProvider.

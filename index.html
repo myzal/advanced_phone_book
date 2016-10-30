@@ -10,29 +10,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+    <script src="vendors/ng-file-upload.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
     <script src="js/controller.js"></script>
 </head>
 
 <body ng-app="telephoneBookApp" ng-Controller="bookController">
-
-<!--<ng-view></ng-view>-->
-<!---->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Your Telephone Book</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#/">Contact List</a></li>
+            <li><a href="#/newPeople">Add contact</a></li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
     <div class="row">
-        <h1>Your Telephone Book</h1>
-        <ul>
-            <li><a href="#/">Lista kontaktów</a></li>
-            <li><a href="#/newPeople">Dodaj kontakt</a></li>
-        </ul>
-
-<ng-view></ng-view>
+        <ng-view></ng-view>
     </div>
 </div>
-
-
-
-
 </body>
 </html>

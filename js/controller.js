@@ -5,39 +5,72 @@
 
 
 
-angular.module('telephoneBookApp.controllers', ['ngRoute','ngSanitize'])
+angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload'])
 
     /* Controller  bookController*/
-.controller('bookController', function ($scope, bookList, $http) {
-    $scope.bookList = bookList.get();
+    .controller('bookController', function ($scope, bookList) {
+        $scope.bookList = bookList.get();
 
-    $scope.searchPeople = function (people) {
-        var keyword = new RegExp($scope.nameFilter, 'i');
-        return !$scope.nameFilter || keyword.test(people.name) || keyword.test(people.surname);
-    };
-    $scope.standardOrder = function (people) {
-        $scope.orderByData = people;
-    };
-    $scope.delete = function(index){
-        bookList.destroy(index);
-    }
+        $scope.searchPeople = function (people) {
+            var keyword = new RegExp($scope.nameFilter, 'i');
+            return !$scope.nameFilter || keyword.test(people.name) || keyword.test(people.surname);
+        };
+        $scope.standardOrder = function (people) {
+            $scope.orderByData = people;
+        };
 
-})
+        $scope.delete = function (index) {
+            bookList.destroy($scope.bookList[index].id);
+            $scope.bookList.splice(index, 1);
+            alert.show();
+        };
 
-/* Controller  newPeople */
-    .controller('newPeople', function ($scope, bookList) {
+
+
+
+    })
+
+    /* Controller  newPeople */
+    .controller('newPeople', function ($scope, bookList, Upload) {
+            $scope.people = bookList.create();
             $scope.submit = function () {
-                bookList.set($scope.people);
-                $scope.people = null;
+                var imageName = $scope.people.name + '_' + $scope.people.surname;
+                console.log(imageName);
+                $scope.people.$save();
+                $scope.people = bookList.create();
                 $scope.submitSuccess = true;
+                if ($scope.submitSuccess) {
+                    $scope.upload($scope.file, imageName);
+                }
             }
+            $scope.upload = function (file, imageName) {
+                Upload.upload({
+                    url: 'upload.php',
+                    data: {file: file, 'image_name': imageName}
+                }).then(function (resp) {
+                        console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                    }
+                    , function (resp) {
+                        console.log('Error status: ' + resp.status);
+                    }, function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    }
+                );
+            };
         }
     )
 
     /* Controller  showPeople */
-    .controller('showPeople', function($scope, $routeParams, bookList){
+    .controller('showPeople', function ($scope, $routeParams, bookList, $timeout) {
         $scope.people = bookList.find($routeParams.id);
 
+        $scope.$on('saved', function () {
+            $timeout(function () {
+                $scope.people.$update();
+            }, 0);
+
+        })
     })
     .directive('editPeople', function () {
         return {
@@ -55,13 +88,14 @@ angular.module('telephoneBookApp.controllers', ['ngRoute','ngSanitize'])
                     value: $scope.value
                 };
 
-                $scope.toggleEditor = function(){
+                $scope.toggleEditor = function () {
                     $scope.editor.showing = !$scope.editor.showing;
                     $scope.editor.value = $scope.value;
                 };
 
-                $scope.save = function(){
+                $scope.save = function () {
                     $scope.value = $scope.editor.value;
+                    $scope.$emit('saved');
                     $scope.toggleEditor();
                 };
 
@@ -70,11 +104,11 @@ angular.module('telephoneBookApp.controllers', ['ngRoute','ngSanitize'])
         }
     })
     /* Filter paragraph */
-    .filter('paragraph', function(){
+    .filter('paragraph', function () {
 
-        return function(input){
-            return input.replace(/\n/g, '<br />');
-        };
-    });
+        return function (input) {
+            return (input) ? input.replace(/\n/g, '<br />') : '';
+        }
+    })
 
 
