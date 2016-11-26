@@ -1,18 +1,13 @@
 {
   "bookList": [
     {
-      "name": "Name",
-      "surname": "Surname",
-      "telephone": 123456,
-      "adres": "test",
-      "id": 1
-    },
-    {
-      "name": "Test",
       "surname": "test",
-      "telephone": 213123123,
-      "adres": "qdasdas",
-      "id": 2
+      "email": "test@o2.pl",
+      "file_name": "no_image.png",
+      "id": 1,
+      "name": "test",
+      "telephone": 4234234,
+      "adres": "test"
     }
   ]
 }

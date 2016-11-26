@@ -35,14 +35,18 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
             $scope.people = bookList.create();
             $scope.submit = function () {
                 var imageName = $scope.people.name + '_' + $scope.people.surname;
-                console.log(imageName);
+                if ($scope.file == undefined){
+                    $scope.people.file_name= 'no_image.png';
+                }
+                else{
+                    $scope.upload($scope.file, imageName);
+                    var exten =$scope.file.name.split('.').pop();
+                    $scope.people.file_name= imageName + '.' + exten;
+                }
                 $scope.people.$save();
                 $scope.people = bookList.create();
                 $scope.submitSuccess = true;
-                if ($scope.submitSuccess) {
-                    $scope.upload($scope.file, imageName);
-                }
-            }
+            },
             $scope.upload = function (file, imageName) {
                 Upload.upload({
                     url: 'upload.php',
@@ -107,7 +111,9 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
     .filter('paragraph', function () {
 
         return function (input) {
-            return (input) ? input.replace(/\n/g, '<br />') : '';
+            //console.log(input.replace(/\n/g, '<br />'));
+            //return (input) ? input.replace(/\n/g, '<br />') : '';
+            return (input);
         }
     })
 

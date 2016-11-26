@@ -24,5 +24,4 @@ angular.module('telephoneBookApp', [ 'telephoneBookApp.services','telephoneBookA
 
 
             .otherwise({redirectTo: '/'});
-        //$locationProvider.html5Mode(true)
     })
