@@ -1,8 +1,47 @@
+html{
+font-size: 10px;
+
+
+}
 img.people-image {
-    max-width:100px;
+    max-width:10rem;
 }
 
 table td{
 
-    padding: 30px;
+    padding: 3rem;
+}
+form input.ng-dirty.ng-invalid {
+    border: solid 1px #FF0000;
+}
+h1{
+    font-size:4rem;
+}
+.people-name{
+    font-size:3rem;
+    display: inline-block;
+}
+
+#form-edit-contact .form-control-static  div.editor-form{
+    border: solid 1px #cccccc;
+    font-size: 2rem;
+position: relative;
+}
+#form-edit-contact .form-control-static  button.edit{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+}
+
+#form-edit-contact .button-decision{
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+
+#form-edit-contact .form-group label{
+    padding-top: 0.5rem;
+
 }

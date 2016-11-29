@@ -8,7 +8,7 @@
 angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload'])
 
     /* Controller  bookController*/
-    .controller('bookController', function ($scope, bookList) {
+    .controller('bookController', function ($scope, bookList, $location) {
         $scope.bookList = bookList.get();
 
         $scope.searchPeople = function (people) {
@@ -25,10 +25,12 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
             alert.show();
         };
 
-
-
-
-    })
+        $scope.activePage=function(path){
+           console.log(path == $location.path());
+            console.log($location.path());
+            return (path == $location.path()) ? 'active' : '';
+        }
+})
 
     /* Controller  newPeople */
     .controller('newPeople', function ($scope, bookList, Upload) {

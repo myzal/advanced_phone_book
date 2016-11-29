@@ -34,11 +34,6 @@
                     <input type="email" id="email" class="form-control" ng-model="people.email"  required>
                 </div>
             </div>
-
-
-
-
-
         </div>
         <div class="col-sm-6">
 
@@ -63,9 +58,13 @@
             <div class="form-group">
                 <div class=" col-sm-offset-2 col-sm-10">
                 <div class= "button btn btn-danger" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-                     ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select file</div>
+                     ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select image</div>
+                    <span class="selected-file">{{file.name}}</span>
                 <!--<input type="text" id="adres" class="form-control" ng-model="people.adres">-->
-            </div></div>
+            </div>
+
+
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="submit" class="btn btn-primary" value="Add Contact" ng-disabled="registerpeople.$invalid">
