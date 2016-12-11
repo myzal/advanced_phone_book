@@ -1,25 +1,27 @@
-<input type="text" ng-model="nameFilter" placeholder="Search..."/>
-<table>
-    <tr>
-        <td>ID</td>
-        <td>Image</td>
-        <td ng-click="standardOrder('name')">Name</td>
-        <td ng-click="standardOrder('surname')">Surname</td>
-        <td>Phone number</td>
-        <td>Adres</td>
-    </tr>
-    <tr ng-repeat="people in bookList | orderBy: orderByData | filter: searchPeople">
-        <td>{{$index + 1}}</td>
-        <td><img class="people-image" ng-src="../telephone-book/images/{{people.file_name}}"/></td>
-        <td>{{(people.name)}}</td>
-        <td>{{people.surname}}</td>
-        <td>{{people.telephone}}</td>
-        <td>{{people.adres}}</td>
-        <td>
-            <a href="#/peoples/{{$index + 1}}" class="btn btn-default btn-xs">Show</a>
-            <button class="btn btn-danger btn-xs" ng-click="delete($index)">Remove</button>
-        </td>
-    </tr>
+<div class="col-xs-12">
+    <input type="text" class="search-contact" ng-model="nameFilter" placeholder="Search contact"/>
+    <table class="contact-table">
+        <tr class="top-tr">
+            <td>ID</td>
+            <td>Image</td>
+            <td ng-click="standardOrder('name')">Name<span class="glyphicon glyphicon-menu-down"></span></td>
+            <td ng-click="standardOrder('surname')">Surname<span class="glyphicon glyphicon-menu-down"></span></td>
+            <td>Phone number</td>
+            <td class="adres-hide">Adres</td>
+        </tr>
+        <tr ng-repeat="people in bookList | orderBy: orderByData | filter: searchPeople">
+            <td>{{$index + 1}}</td>
+            <td><img class="people-image" ng-src="../telephone-book/images/{{people.file_name}}"/></td>
+            <td>{{(people.name)}}</td>
+            <td>{{people.surname}}</td>
+            <td>{{people.telephone}}</td>
+            <td class="adres-hide">{{people.adres}}</td>
+            <td>
+                <a href="#/peoples/{{$index + 1}}" class="btn btn-default btn-sm">Show</a>
+                <button class="btn btn-danger btn-sm" ng-click="delete($index)">Remove</button>
+            </td>
+        </tr>
 
 
-</table>
+    </table>
+</div>

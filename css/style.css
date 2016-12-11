@@ -1,47 +1,146 @@
 html{
-font-size: 10px;
-
-
+    font-size: 10px;
 }
+
 img.people-image {
-    max-width:10rem;
+    max-width: 10rem;
 }
 
-table td{
-
+table td {
     padding: 3rem;
+    font-size: 1.4rem;
 }
+
+table tr {
+    border-bottom: 1px solid #eee;
+}
+
+table .top-tr {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table .top-tr td {
+    padding-right: 2rem;
+}
+
+td span {
+
+    padding-left: 5px;
+}
+
+table .btn {
+    display: inline-block;
+    font-size: 1.2rem;
+
+}
+
 form input.ng-dirty.ng-invalid {
     border: solid 1px #FF0000;
 }
-h1{
-    font-size:4rem;
+
+h1 {
+    font-size: 4rem;
 }
-.people-name{
-    font-size:3rem;
+
+.people-name {
+    font-size: 3rem;
     display: inline-block;
 }
 
-#form-edit-contact .form-control-static  div.editor-form{
-    border: solid 1px #cccccc;
-    font-size: 2rem;
-position: relative;
-}
-#form-edit-contact .form-control-static  button.edit{
+#form-edit-contact .form-control-static button.edit {
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-
+    margin-top: 0.7rem;
+    height: 3.4rem;
 }
 
-#form-edit-contact .button-decision{
+#form-edit-contact .button-decision {
     display: inline-block;
     margin-top: 1rem;
 }
 
-
-#form-edit-contact .form-group label{
+#form-edit-contact .form-group label {
     padding-top: 0.5rem;
 
+}
+
+.form-horizontal .form-group {
+    margin-bottom: 3rem;
+}
+
+.form-horizontal label {
+    height: 34px;
+    line-height: 34px;
+    margin-bottom: 0;
+}
+
+/* RWD */
+@media only screen and (max-width: 1200px) {
+    td span {
+        padding-left: 0;
+    }
+
+    table td {
+        padding: 2rem;
+    }
+
+    table .top-tr {
+        font-size: 1.2rem;
+    }
+
+    .search-contact {
+        margin-left: 2rem;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+
+    table td .btn {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .search-contact {
+        margin-left: 0;
+    }
+
+    table, table .btn {
+        width: 100%;
+    }
+
+    .contact-table td.adres-hide {
+        display: none;
+    }
+
+    table td {
+
+        padding: 0.8rem;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    table tr td:first-child {
+        display: none;
+    }
+
+    table td {
+        padding: 2rem 0 2rem 0;
+    }
+
+    html {
+        font-size: 8px;
+    }
+
+    img.people-image {
+        max-width: 6rem;
+    }
 }
