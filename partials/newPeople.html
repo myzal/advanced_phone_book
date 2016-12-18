@@ -6,31 +6,30 @@
    New contact was added.
 </div>
 
-<form name="registerpeople" class="form-horizontal" ng-submit="submit()" accept-charset="utf-8">
-    <div class="row">
+<form name="registerpeople" id="registerpeople" class="form-horizontal" ng-submit="submit()" accept-charset="utf-8">
         <div class="col-sm-6">
 
             <div class="form-group">
-                <label for="name" class="col-sm-2">Name:</label>
+                <label for="name" class="col-md-2">Name:</label>
 
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <input type="text" id="name" class="form-control" ng-model="people.name"  required>
                 </div>
             </div>
 
 
             <div class="form-group">
-                <label for="surname" class="col-sm-2">Surname:</label>
+                <label for="surname" class="col-md-2">Surname:</label>
 
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <input type="text" id="surname" class="form-control"  ng-model="people.surname"  required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="email" class="col-sm-2">Email:</label>
+                <label for="email" class="col-md-2">Email:</label>
 
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <input type="email" id="email" class="form-control" ng-model="people.email"  required>
                 </div>
             </div>
@@ -38,9 +37,9 @@
         <div class="col-sm-6">
 
             <div class="form-group">
-                <label for="telephone" class="col-sm-2">Telephone:</label>
+                <label for="telephone" class="col-md-2">Telephone:</label>
 
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <input type="text" id="telephone" class="form-control" ng-model="people.telephone"  required>
                 </div>
             </div>
@@ -49,14 +48,14 @@
             <div class="form-group">
                 <label for="adres" class="col-sm-2">Adres:</label>
 
-                <div class="col-sm-6">
+                <div class="col-md-6">
 
                     <!--<input type="textarea" id="adres" class="form-control" ng-model="people.adres"  required>-->
                     <textarea id="adres" class="form-control" ng-model="people.adres"  required/>
                 </div>
             </div>
-            <div class="form-group">
-                <div class=" col-sm-offset-2 col-sm-10">
+            <div class="form-group button-image">
+                <div class=" col-md-offset-2 col-md-10">
                 <div class= "button btn btn-danger" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
                      ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select image</div>
                     <span class="selected-file">{{file.name}}</span>
@@ -66,10 +65,10 @@
 
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" value="Add Contact" ng-disabled="registerpeople.$invalid">
                 </div>
             </div>
             </div>
-    </div>
+
 </form>

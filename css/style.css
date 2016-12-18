@@ -1,4 +1,4 @@
-html{
+html {
     font-size: 10px;
 }
 
@@ -80,6 +80,14 @@ h1 {
 
 /* RWD */
 @media only screen and (max-width: 1200px) {
+
+    .contact-table .btn{
+        width:100%;
+    }
+    .contact-table .btn-danger{
+        margin-top: 2rem;
+    }
+
     td span {
         padding-left: 0;
     }
@@ -104,9 +112,16 @@ h1 {
         display: block;
         margin-bottom: 1rem;
     }
+    /*new people */
+    #registerpeople .btn {
+        width: 100%;
+    }
+    #registerpeople .button-image {
+        margin-top: 4.25rem;
+    }
 
+    /*******************/
 }
-
 @media only screen and (max-width: 768px) {
     .search-contact {
         margin-left: 0;
@@ -124,14 +139,15 @@ h1 {
 
         padding: 0.8rem;
     }
+    .page-header {
+        text-align: center;
+    }
 
-}
-
-@media only screen and (max-width: 480px) {
     table tr td:first-child {
         display: none;
     }
-
+}
+@media only screen and (max-width: 480px) {
     table td {
         padding: 2rem 0 2rem 0;
     }
@@ -143,4 +159,20 @@ h1 {
     img.people-image {
         max-width: 6rem;
     }
+    #form-edit-contact .form-control-static button.edit {
+        height: 4.4rem;
+    }
+    h1{
+        margin-bottom: 5rem;
+    }
+    .contact-table tr:not(:nth-child(1)) td {
+        font-size: 1.5rem;
+    }
 }
+
+
+
+
+
+
+
