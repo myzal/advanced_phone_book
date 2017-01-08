@@ -2,7 +2,7 @@
  * Created by Mateusz on 25.09.2016.
  */
 angular.module('telephoneBookApp', [ 'telephoneBookApp.services','telephoneBookApp.controllers','ngRoute', 'ngSanitize',
-    'ngResource', 'ngFileUpload'
+    'ngResource', 'ngFileUpload', 'ui.calendar'
 ])
     .config(function ($routeProvider) {
         $routeProvider.
@@ -22,6 +22,9 @@ angular.module('telephoneBookApp', [ 'telephoneBookApp.services','telephoneBookA
                 templateUrl: 'partials/showPeople.html'
             })
 
-
+            .when("/calendar", {
+                controller: 'calendar',
+                templateUrl: 'partials/calendar.html'
+            })
             .otherwise({redirectTo: '/'});
     })

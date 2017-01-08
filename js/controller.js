@@ -5,11 +5,25 @@
 
 
 
-angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload'])
+angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload','ui.calendar'])
+
+
+    /*kalendarz*/
+
+
+
+
+
+
+
+
+
+
 
     /* Controller  bookController*/
     .controller('bookController', function ($scope, bookList, $location) {
         $scope.bookList = bookList.get();
+
 
         $scope.searchPeople = function (people) {
             var keyword = new RegExp($scope.nameFilter, 'i');
@@ -25,45 +39,45 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
             alert.show();
         };
 
-        $scope.activePage=function(path){
-           console.log(path == $location.path());
-            console.log($location.path());
+        $scope.activePage = function (path) {
             return (path == $location.path()) ? 'active' : '';
         }
-})
+    })
 
     /* Controller  newPeople */
     .controller('newPeople', function ($scope, bookList, Upload) {
             $scope.people = bookList.create();
             $scope.submit = function () {
+
+
                 var imageName = $scope.people.name + '_' + $scope.people.surname;
-                if ($scope.file == undefined){
-                    $scope.people.file_name= 'no_image.png';
+                if ($scope.file == undefined) {
+                    $scope.people.file_name = 'no_image.png';
                 }
-                else{
+                else {
                     $scope.upload($scope.file, imageName);
-                    var exten =$scope.file.name.split('.').pop();
-                    $scope.people.file_name= imageName + '.' + exten;
+                    var exten = $scope.file.name.split('.').pop();
+                    $scope.people.file_name = imageName + '.' + exten;
                 }
                 $scope.people.$save();
                 $scope.people = bookList.create();
                 $scope.submitSuccess = true;
             },
-            $scope.upload = function (file, imageName) {
-                Upload.upload({
-                    url: 'upload.php',
-                    data: {file: file, 'image_name': imageName}
-                }).then(function (resp) {
-                        console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-                    }
-                    , function (resp) {
-                        console.log('Error status: ' + resp.status);
-                    }, function (evt) {
-                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-                    }
-                );
-            };
+                $scope.upload = function (file, imageName) {
+                    Upload.upload({
+                        url: 'upload.php',
+                        data: {file: file, 'image_name': imageName}
+                    }).then(function (resp) {
+                            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                        }
+                        , function (resp) {
+                            console.log('Error status: ' + resp.status);
+                        }, function (evt) {
+                            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                        }
+                    );
+                };
         }
     )
 
@@ -78,7 +92,54 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
         })
     })
-    .directive('editPeople', function () {
+
+
+    .controller('calendar', function ($scope, bookList,uiCalendarConfig) {
+var year, new_year, actual_year;
+            $scope.events = [];
+            $scope.eventSources = [$scope.events];
+            angular.forEach($scope.bookList, function (value) {
+                year= (value.date).slice(4);
+                actual_year=new Date().getFullYear();
+                new_year=actual_year+year;
+                $scope.events.push({
+                    title: value.name,
+                    surname: value.surname,
+                    start: new Date(new_year),
+                    end: new Date(new_year),
+                    allDay: 1,
+                    stick: true,
+                    adres: value.adres,
+                    email: value.email,
+                    phone: value.telephone
+                })
+
+            });
+
+
+            console.log($scope.events);
+            $scope.uiConfig = {
+                calendar: {
+                    height: 450,
+                    editable: true,
+                    displayEventTime: false,
+                    header: {
+                        left: 'month basicWeek basicDay agendaWeek agendaDay',
+                        center: 'title',
+                        right: 'today prev,next'
+                    },
+                    eventClick: function (event) {
+                        $scope.SelectedEvent = event;
+                    }
+
+                }
+            };
+        }
+    )
+
+
+    .
+    directive('editPeople', function () {
         return {
             restrict: 'AE',
             templateUrl: 'partials/editPeople.html',
@@ -109,6 +170,14 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
         }
     })
+
+    //.filter("dateOnly", function() {
+    //    return function (input) {
+    //        return input.split(' ')[0];
+    //    }
+    //})
+
+
     /* Filter paragraph */
     .filter('paragraph', function () {
 
