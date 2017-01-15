@@ -8,6 +8,7 @@
       "id": 1,
       "name": "test",
       "telephone": 4234234,
+      "range": "fs",
       "adres": "test"
     },
     {
@@ -18,6 +19,7 @@
       "telephone": 21312312,
       "adres": "dasdasdasd dasdas dadsadsa das",
       "file_name": "no_image.png",
+      "range": "fs",
       "id": 2
     },
     {
@@ -28,6 +30,7 @@
       "telephone": 34131,
       "adres": "sdadas dasdas daa New York",
       "file_name": "Jack_Sparrow.jpg",
+      "range": "fm",
       "id": 3
     },
     {
@@ -38,6 +41,7 @@
       "telephone": 1231231,
       "adres": "dasdasdasda",
       "file_name": "Jessica_Test.jpg",
+      "range": "fc",
       "id": 4
     },
     {
@@ -48,6 +52,7 @@
       "telephone": 3123123,
       "adres": "xczxczxczxczxc",
       "file_name": "no_image.png",
+      "range": "fs",
       "id": 5
     },
     {
@@ -58,6 +63,7 @@
       "adres": "dasdsa",
       "date": "2016-06-11T23:00:00.000Z",
       "file_name": "no_image.png",
+      "range": "fo",
       "id": 6
     },
     {
@@ -68,7 +74,41 @@
       "telephone": 312312,
       "adres": "dadsadasda",
       "file_name": "no_image.png",
+      "range": "fs",
       "id": 7
+    },
+    {
+      "name": "dasdsa",
+      "surname": "dasdas",
+      "email": "dasda@o2.pl",
+      "telephone": 13123213,
+      "adres": "adsdasdasd",
+      "date": "2017-01-03T23:00:00.000Z",
+      "range": "fm",
+      "file_name": "no_image.png",
+      "id": 8
+    },
+    {
+      "date": "2017-01-03T23:00:00.000Z",
+      "name": "sadsadas",
+      "surname": "dasdasda",
+      "email": "dasdas@o2.pl",
+      "telephone": 312312,
+      "adres": "sdasdasdas",
+      "range": "fm",
+      "file_name": "no_image.png",
+      "id": 9
+    },
+    {
+      "date": "1997-08-26T22:00:00.000Z",
+      "name": "ddsgsf",
+      "surname": "fdsfdsf",
+      "email": "fs@o2.pl",
+      "telephone": 21312312,
+      "adres": "sdfdsfsd",
+      "range": "fm",
+      "file_name": "no_image.png",
+      "id": 10
     }
   ]
 }

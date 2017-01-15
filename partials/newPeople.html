@@ -56,9 +56,32 @@
             </div>
             <div class="form-group">
                 <label for="date" class="col-md-2">Date:</label>
-                <div class="col-md-6">
-                    <input type="date" id="date" class="form-control" ng-model="people.date"  required>
+                <!--<div class="col-md-6">-->
+                    <!--<input type="date" id="date" class="form-control" ng-model="people.date"  name="dupa" required>-->
+                <!--</div>-->
+                <div class="col-md-6 date-picker">
+                    <p class="input-group">
+                        <input type="text" id="date" class="form-control" uib-datepicker-popup ng-model="people.date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                    </p>
                 </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label for="date" class="col-md-2">Range:</label>
+                <div class="col-md-6">
+                    <select class="form-control" ng-change="unitChanged()" ng-model="people.range" required>
+                        <option value="">---Please select---</option>
+                        <option ng-selected="data.unit == item.id" ng-repeat="item in select" ng-value="item.id">{{item.name}}</option>
+                    </select>
+
+                                </div>
             </div>
             <div class="form-group button-image">
                 <div class=" col-md-offset-2 col-md-10">

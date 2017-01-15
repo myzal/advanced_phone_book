@@ -5,7 +5,7 @@
 
 
 
-angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload','ui.calendar'])
+angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload', 'ui.calendar','ui.bootstrap'])
 
 
     /*kalendarz*/
@@ -46,7 +46,43 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
     /* Controller  newPeople */
     .controller('newPeople', function ($scope, bookList, Upload) {
+        //function disabled(data) {
+        //    var date = data.date,
+        //        mode = data.mode;
+        //    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        //}
+
+
+
+
+        $scope.dateOptions = {
+            //dateDisabled: disabled,
+            //formatYear: 'yy',
+            //initDate : new Date(2000, 5, 22),
+            maxDate: new Date(),
+            //minDate:
+            startingDay: 1
+        };
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+
+        $scope.popup2 = {
+            opened: false
+        };
+
+
+
+
+            $scope.select =
+                [
+                    {id: 'fm', name: 'Family'},
+                    {id: 'fs', name: 'Friends'},
+                    {id: 'fc', name: 'Colleagues'},
+                    {id: 'fo', name: 'Others'}
+                ];
             $scope.people = bookList.create();
+        $scope.people.date = new Date(2000, 1, 01);
             $scope.submit = function () {
 
 
@@ -94,14 +130,29 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
     })
 
 
-    .controller('calendar', function ($scope, bookList,uiCalendarConfig) {
-var year, new_year, actual_year;
+    .controller('calendar', function ($scope, bookList, uiCalendarConfig) {
+            var year, new_year, actual_year, color;
             $scope.events = [];
             $scope.eventSources = [$scope.events];
             angular.forEach($scope.bookList, function (value) {
-                year= (value.date).slice(4);
-                actual_year=new Date().getFullYear();
-                new_year=actual_year+year;
+                year = (value.date).slice(4);
+                actual_year = new Date().getFullYear();
+                new_year = actual_year + year;
+
+                if (value.range == 'fs') {
+                    color = '#006dcc';
+                }
+                else if (value.range == 'fm') {
+                    color = '#5bb75b';
+                }
+                else if (value.range == 'fc') {
+                    color = '#8A2BE2';
+                }
+                else {
+                    color = '#FF6347';
+
+                }
+
                 $scope.events.push({
                     title: value.name,
                     surname: value.surname,
@@ -111,7 +162,9 @@ var year, new_year, actual_year;
                     stick: true,
                     adres: value.adres,
                     email: value.email,
-                    phone: value.telephone
+                    phone: value.telephone,
+                    color: color
+
                 })
 
             });

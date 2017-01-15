@@ -6,31 +6,33 @@ img.people-image {
     max-width: 10rem;
 }
 
-table td {
+
+
+table.contact-table td {
     padding: 3rem;
     font-size: 1.4rem;
 }
 
-table tr {
+table.contact-table tr {
     border-bottom: 1px solid #eee;
 }
 
-table .top-tr {
+table.contact-table .top-tr {
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
 }
 
-table .top-tr td {
+table.contact-table .top-tr td {
     padding-right: 2rem;
 }
 
-td span {
+table.contact-table td span {
 
     padding-left: 5px;
 }
 
-table .btn {
+table.contact-table .btn {
     display: inline-block;
     font-size: 1.2rem;
 
@@ -81,22 +83,22 @@ h1 {
 /* RWD */
 @media only screen and (max-width: 1200px) {
 
-    .contact-table .btn{
+    table.contact-table .btn{
         width:100%;
     }
-    .contact-table .btn-danger{
+    table.contact-table .btn-danger{
         margin-top: 2rem;
     }
 
-    td span {
+    table.contact-table  td span {
         padding-left: 0;
     }
 
-    table td {
+    table.contact-table td {
         padding: 2rem;
     }
 
-    table .top-tr {
+    table.contact-table .top-tr {
         font-size: 1.2rem;
     }
 
@@ -108,7 +110,7 @@ h1 {
 
 @media only screen and (max-width: 992px) {
 
-    table td .btn {
+    table.contact-table td .btn {
         display: block;
         margin-bottom: 1rem;
     }
@@ -127,15 +129,15 @@ h1 {
         margin-left: 0;
     }
 
-    table, table .btn {
+    table.contact-table, table.contact-table .btn {
         width: 100%;
     }
 
-    .contact-table td.adres-hide {
+    table.contact-table td.adres-hide {
         display: none;
     }
 
-    table td {
+    table.contact-table td {
 
         padding: 0.8rem;
     }
@@ -143,12 +145,12 @@ h1 {
         text-align: center;
     }
 
-    table tr td:first-child {
+    table.contact-table tr td:first-child {
         display: none;
     }
 }
 @media only screen and (max-width: 480px) {
-    table td {
+    table.contact-table td {
         padding: 2rem 0 2rem 0;
     }
 
@@ -165,14 +167,44 @@ h1 {
     h1{
         margin-bottom: 5rem;
     }
-    .contact-table tr:not(:nth-child(1)) td {
+    table.contact-tabletr:not(:nth-child(1)) td {
         font-size: 1.5rem;
     }
 }
 
+/* map legend */
+
+.legend{
+    margin: 2% 0;
+
+}
+
+.square {
+    padding: 5px;
+    color:white;
+    margin-right: 1%;
+}
+.green{
+   background-color: #5bb75b;
+}
+.blue{
+    background-color: #006dcc;
+}
+.violet{
+    background-color: #8A2BE2;
+}
+.red{
+    background-color: #FF6347;
+}
+
+/* datepicker */
+
+
+.date-picker table td{
 
 
 
+}
 
 
 
