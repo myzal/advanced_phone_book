@@ -9,7 +9,7 @@
       "name": "test",
       "telephone": 4234234,
       "range": "fs",
-      "adres": "test"
+      "adres": "Szczecin mickiewicza"
     },
     {
       "date": "2016-02-11T23:00:00.000Z",
@@ -17,7 +17,7 @@
       "surname": "bravo",
       "email": "dads@o2.pl",
       "telephone": 21312312,
-      "adres": "dasdasdasd dasdas dadsadsa das",
+      "adres": "Szczecin struga",
       "file_name": "no_image.png",
       "range": "fs",
       "id": 2
@@ -28,7 +28,7 @@
       "surname": "Sparrow",
       "email": "test@gmail.com",
       "telephone": 34131,
-      "adres": "sdadas dasdas daa New York",
+      "adres": "Szczecin wojska polskiego",
       "file_name": "Jack_Sparrow.jpg",
       "range": "fm",
       "id": 3
@@ -39,7 +39,7 @@
       "surname": "Test",
       "email": "dasda@gmail.com",
       "telephone": 1231231,
-      "adres": "dasdasdasda",
+      "adres": "Szczecin komuny paryskiej",
       "file_name": "Jessica_Test.jpg",
       "range": "fc",
       "id": 4
@@ -50,7 +50,7 @@
       "surname": "dasdsa",
       "email": "dads@o2.pl",
       "telephone": 3123123,
-      "adres": "xczxczxczxczxc",
+      "adres": "Szczecin janickiego",
       "file_name": "no_image.png",
       "range": "fs",
       "id": 5
@@ -60,7 +60,7 @@
       "surname": "dadas",
       "email": "dsadas@o2.pl",
       "telephone": "dasdas",
-      "adres": "dasdsa",
+      "adres": "Szczecin wyszyńskiego",
       "date": "2016-06-11T23:00:00.000Z",
       "file_name": "no_image.png",
       "range": "fo",
@@ -72,7 +72,7 @@
       "surname": "fdsfdsf",
       "email": "sadas@o2.pl",
       "telephone": 312312,
-      "adres": "dadsadasda",
+      "adres": "Szczecin aleja wyzwolenia",
       "file_name": "no_image.png",
       "range": "fs",
       "id": 7
@@ -82,7 +82,7 @@
       "surname": "dasdas",
       "email": "dasda@o2.pl",
       "telephone": 13123213,
-      "adres": "adsdasdasd",
+      "adres": "Szczecin emilii gierczak",
       "date": "2017-01-03T23:00:00.000Z",
       "range": "fm",
       "file_name": "no_image.png",
@@ -94,7 +94,7 @@
       "surname": "dasdasda",
       "email": "dasdas@o2.pl",
       "telephone": 312312,
-      "adres": "sdasdasdas",
+      "adres": "Szczecin bohaterów warszawy",
       "range": "fm",
       "file_name": "no_image.png",
       "id": 9
@@ -105,7 +105,7 @@
       "surname": "fdsfdsf",
       "email": "fs@o2.pl",
       "telephone": 21312312,
-      "adres": "sdfdsfsd",
+      "adres": "Szczecin mickiewicza",
       "range": "fm",
       "file_name": "no_image.png",
       "id": 10

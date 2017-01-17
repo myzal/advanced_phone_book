@@ -9,18 +9,23 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="vendors/jquery.min.js"></script>
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbd1OGwfILtMJmBgkqc0T2n57FNx6faio&libraries=places">
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
-    <script src="js/ui-bootstrap-tpls-2.4.0.min.js"></script>
+    <script src="vendors/ui-bootstrap-tpls-2.4.0.min.js"></script>
     <script src="vendors/ng-file-upload.min.js"></script>
     <script src="vendors/moment.min.js"></script>
     <script src="vendors/calendar.js"></script>
     <script src="vendors/fullcalendar.min.js"></script>
+
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
     <script src="js/controller.js"></script>
+
 </head>
 
 <body ng-app="telephoneBookApp" ng-Controller="bookController">
@@ -40,6 +45,7 @@
             <li ng-class="activePage('/')"><a href="#/">Contact List</a></li>
             <li ng-class="activePage('/newPeople')"><a href="#/newPeople">Add contact</a></li>
             <li ng-class="activePage('/calendar')"><a href="#/calendar">Birthday Calendar</a></li>
+            <li ng-class="activePage('/map')"><a href="#/map">Contact Map</a></li>
         </ul>
     </div>
     </div>

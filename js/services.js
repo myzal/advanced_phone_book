@@ -22,12 +22,5 @@ angular.module('telephoneBookApp.services', ['ngResource','ngFileUpload'])
                 resource.delete({id: id});
             }
         }
-    })
+    });
 
-
-;
-
-//var upload = Upload.upload({
-//    url: 'server/upload/url', // upload.php script, node.js route, or servlet url
-//
-//});

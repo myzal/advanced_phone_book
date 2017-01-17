@@ -5,20 +5,7 @@
 
 
 
-angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload', 'ui.calendar','ui.bootstrap'])
-
-
-    /*kalendarz*/
-
-
-
-
-
-
-
-
-
-
+angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload', 'ui.calendar', 'ui.bootstrap'])
 
     /* Controller  bookController*/
     .controller('bookController', function ($scope, bookList, $location) {
@@ -46,32 +33,17 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
     /* Controller  newPeople */
     .controller('newPeople', function ($scope, bookList, Upload) {
-        //function disabled(data) {
-        //    var date = data.date,
-        //        mode = data.mode;
-        //    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        //}
+            $scope.dateOptions = {
+                maxDate: new Date(),
+                startingDay: 1
+            };
+            $scope.open2 = function () {
+                $scope.popup2.opened = true;
+            };
 
-
-
-
-        $scope.dateOptions = {
-            //dateDisabled: disabled,
-            //formatYear: 'yy',
-            //initDate : new Date(2000, 5, 22),
-            maxDate: new Date(),
-            //minDate:
-            startingDay: 1
-        };
-        $scope.open2 = function() {
-            $scope.popup2.opened = true;
-        };
-
-        $scope.popup2 = {
-            opened: false
-        };
-
-
+            $scope.popup2 = {
+                opened: false
+            };
 
 
             $scope.select =
@@ -82,7 +54,7 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
                     {id: 'fo', name: 'Others'}
                 ];
             $scope.people = bookList.create();
-        $scope.people.date = new Date(2000, 1, 01);
+            $scope.people.date = new Date(2000, 1, 01);
             $scope.submit = function () {
 
 
@@ -169,8 +141,6 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
             });
 
-
-            console.log($scope.events);
             $scope.uiConfig = {
                 calendar: {
                     height: 450,
@@ -189,6 +159,61 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
             };
         }
     )
+
+    .controller('map', function ($scope, bookList) {
+
+        geocoder = new google.maps.Geocoder();
+
+        var mapOptions = {
+            zoom: 11,
+            //center: latlng,
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        }
+
+        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        $scope.markers = [];
+
+        var infoWindow = new google.maps.InfoWindow();
+
+        var createMarker = function (info) {
+            if (geocoder) {
+                geocoder.geocode({'address': info.adres}, function (results, status) {
+                    $scope.map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: $scope.map,
+                        //position: new google.maps.LatLng(info.lat, info.long),
+                        position: results[0].geometry.location,
+                        title: info.name,
+                        adres: info.adres
+                    });
+                    marker.content = '<div class="infoWindowContent">' + info.name + '</div>';
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        console.log(marker);
+                        infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.adres);
+                        infoWindow.open($scope.map, marker);
+                    });
+
+                    $scope.markers.push(marker);
+                });
+            }
+            else {
+                console.log(status);
+            }
+
+        }
+        angular.forEach($scope.bookList, function (value) {
+
+            createMarker(value);
+        })
+        $scope.openInfoWindow = function (e, selectedMarker) {
+            e.preventDefault();
+            google.maps.event.trigger(selectedMarker, 'click');
+        }
+
+
+    })
 
 
     .
@@ -223,20 +248,10 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
         }
     })
-
-    //.filter("dateOnly", function() {
-    //    return function (input) {
-    //        return input.split(' ')[0];
-    //    }
-    //})
-
-
     /* Filter paragraph */
     .filter('paragraph', function () {
 
         return function (input) {
-            //console.log(input.replace(/\n/g, '<br />'));
-            //return (input) ? input.replace(/\n/g, '<br />') : '';
             return (input);
         }
     })

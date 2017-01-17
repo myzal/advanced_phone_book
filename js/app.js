@@ -26,5 +26,11 @@ angular.module('telephoneBookApp', [ 'telephoneBookApp.services','telephoneBookA
                 controller: 'calendar',
                 templateUrl: 'partials/calendar.html'
             })
+
+            .when("/map", {
+                controller: 'map',
+                templateUrl: 'partials/map.html'
+            })
+
             .otherwise({redirectTo: '/'});
     })
