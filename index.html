@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="vendors/jquery.min.js"></script>
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbd1OGwfILtMJmBgkqc0T2n57FNx6faio&libraries=places">
-    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.js"></script>
@@ -21,6 +19,9 @@
     <script src="vendors/moment.min.js"></script>
     <script src="vendors/calendar.js"></script>
     <script src="vendors/fullcalendar.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbd1OGwfILtMJmBgkqc0T2n57FNx6faio&libraries=places">
+    </script>
 
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
@@ -41,18 +42,49 @@
             <a class="navbar-brand" href="#/">Your Telephone Book</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
-        <ul class="nav navbar-nav">
-            <li ng-class="activePage('/')"><a href="#/">Contact List</a></li>
-            <li ng-class="activePage('/newPeople')"><a href="#/newPeople">Add contact</a></li>
-            <li ng-class="activePage('/calendar')"><a href="#/calendar">Birthday Calendar</a></li>
-            <li ng-class="activePage('/map')"><a href="#/map">Contact Map</a></li>
-        </ul>
-    </div>
+            <ul class="nav navbar-nav">
+                <li ng-class="activePage('/')"><a href="#/">Contact List</a></li>
+                <li ng-class="activePage('/newPeople')"><a href="#/newPeople">Add contact</a></li>
+                <li ng-class="activePage('/calendar')"><a href="#/calendar">Birthday Calendar</a></li>
+                <li ng-class="activePage('/map')"><a href="#/map">Contact Map</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
 <div class="container">
     <div class="row">
-        <ng-view></ng-view>
+        <div class="col-lg-2 contact-col">
+            <table class="small-contact-table">
+                <h3>Yours Contacts</h3>
+                <ul class="small-contacts list-unstyled">
+                    <li ng-repeat="people in bookList">
+                        <a href="#/peoples/{{$index + 1}}">
+                            <img class="people-small" ng-src="../telephone-book/images/{{people.file_name}}"/>
+                            {{(people.name)}} {{people.surname}}
+                        </a>
+
+                        <div class="contact-details">
+                            <div class="first-cell">
+                                <img class="people-detail-image"
+                                     ng-src="../telephone-book/images/{{people.file_name}}"/>
+                            </div>
+                            <div class="second-cell">
+                                <div class="name-desc"> {{(people.name)}} {{people.surname}}</div>
+                                <div>{{people.telephone}}</div>
+                                <a href="mailto:{{people.email}}">{{people.email}}</a>
+                                <!--<div>{{people.email}}</div>-->
+                                <div>{{people.adres}}</div>
+
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </table>
+        </div>
+        <div class="col-lg-10">
+            <ng-view></ng-view>
+        </div>
     </div>
 </div>
 </body>

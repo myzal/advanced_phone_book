@@ -162,57 +162,87 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
     .controller('map', function ($scope, bookList) {
 
-        geocoder = new google.maps.Geocoder();
-
+        var  geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(53.4256373, 14.5800438);
         var mapOptions = {
             zoom: 11,
-            //center: latlng,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            center: latlng,
+            //mapTypeId: google.maps.MapTypeId.TERRAIN,
+            styles: [
+                {
+                    stylers: [
+                        {hue: '#C0C0C0'},
+                        {saturation: -100}
+                    ]
+                }]
         }
-
         $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
 
         $scope.markers = [];
 
         var infoWindow = new google.maps.InfoWindow();
 
         var createMarker = function (info) {
-            if (geocoder) {
-                geocoder.geocode({'address': info.adres}, function (results, status) {
-                    $scope.map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: $scope.map,
-                        //position: new google.maps.LatLng(info.lat, info.long),
-                        position: results[0].geometry.location,
-                        title: info.name,
-                        adres: info.adres
-                    });
+            geocoder.geocode({'address': info.adres}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    switch (info.range) {
+                        case "fs":
+                            icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+                            break;
+                        case "fm":
+                            icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+                            break;
+
+                        case"fc":
+                            icon = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+                            break;
+
+                        default:
+                            icon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+                            break;
+                    }
+
+                    //$scope.map.setCenter(results[0].geometry.location);
+
+
+                        var marker = new google.maps.Marker({
+                            map: $scope.map,
+                            position: results[0].geometry.location,
+                            title: info.name + ' ' + info.surname,
+                            adres: info.adres,
+                            icon: new google.maps.MarkerImage(icon)
+
+                        });
+
                     marker.content = '<div class="infoWindowContent">' + info.name + '</div>';
 
                     google.maps.event.addListener(marker, 'click', function () {
-                        console.log(marker);
                         infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.adres);
                         infoWindow.open($scope.map, marker);
                     });
 
                     $scope.markers.push(marker);
-                });
-            }
-            else {
-                console.log(status);
-            }
+                }
 
+
+                else {
+                    console.log(status);
+                }
+            })
         }
+
+
+
         angular.forEach($scope.bookList, function (value) {
 
-            createMarker(value);
+                    createMarker(value);
+
         })
         $scope.openInfoWindow = function (e, selectedMarker) {
             e.preventDefault();
             google.maps.event.trigger(selectedMarker, 'click');
         }
-
-
     })
 
 

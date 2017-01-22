@@ -1,8 +1,8 @@
 <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-offset-2 col-md-7">
             <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
                 <h2 style="margin-top:0px"> Selected Birthday:</h2>
                 <h3 style="color:#A9A50E">{{SelectedEvent.title}} {{SelectedEvent.surname}}</h3>
@@ -13,7 +13,7 @@
         </div>
     </div>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-offset-2 col-md-10">
         <div class="legend">Legend:</div>
         <span class="square green">Friends</span>
         <span class="square blue">Family</span>

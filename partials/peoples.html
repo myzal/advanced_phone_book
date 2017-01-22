@@ -10,6 +10,8 @@
             <td class="adres-hide">Adres</td>
         </tr>
         <tr ng-repeat="people in bookList | orderBy: orderByData | filter: searchPeople">
+
+
             <td>{{$index + 1}}</td>
             <td><img class="people-image" ng-src="../telephone-book/images/{{people.file_name}}"/></td>
             <td>{{(people.name)}}</td>
