@@ -1,6 +1,6 @@
 <div ng-hide="editor.showing" class="editor-form  form-control">
     <span ng-bind-html="value | paragraph"></span>
-    <button class="btn btn-default btn-sm edit" ng-click="toggleEditor()">Edit</button>
+    <button class="btn btn-default btn-sm edit" ng-click="toggleEditor()">{{ 'EDIT' | translate }}</button>
 </div>
 <div ng-show="editor.showing">
     <div ng-if="field == 'textarea'">
@@ -11,6 +11,6 @@
     </div>
 </div>
 <div class="button-decision">
-<button class="btn btn-success bts-xs" ng-click="save()">Save</button>
-<button class="btn btn-danger btn-md" ng-click="toggleEditor()">Cancel</button>
+<button class="btn btn-success bts-xs" ng-click="save()">{{ 'SAVE' | translate }}</button>
+<button class="btn btn-danger btn-md" ng-click="toggleEditor()">{{ 'CANCEL' | translate }}</button>
 </div>

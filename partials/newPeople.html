@@ -1,16 +1,17 @@
 <div class="page-header">
-    <h1>Add Contact</h1>
+    <h1>{{ 'ADD_CONTACT' | translate }}</h1>
 </div>
 
 <div class="alert alert-success" ng-show="submitSuccess">
-   New contact was added.
+
+    {{ 'NEW_CONTACT' | translate }}
 </div>
 
 <form name="registerpeople" id="registerpeople" class="form-horizontal" ng-submit="submit()" accept-charset="utf-8">
         <div class="col-sm-6">
 
             <div class="form-group">
-                <label for="name" class="col-md-2">Name:</label>
+                <label for="name" class="col-md-2">{{ 'NAME' | translate }}:</label>
 
                 <div class="col-md-6">
                     <input type="text" id="name" class="form-control" ng-model="people.name"  required>
@@ -19,7 +20,7 @@
 
 
             <div class="form-group">
-                <label for="surname" class="col-md-2">Surname:</label>
+                <label for="surname" class="col-md-2">{{ 'SURNAME' | translate }}:</label>
 
                 <div class="col-md-6">
                     <input type="text" id="surname" class="form-control"  ng-model="people.surname"  required>
@@ -27,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label for="email" class="col-md-2">Email:</label>
+                <label for="email" class="col-md-2">{{ 'EMAIL' | translate }}:</label>
 
                 <div class="col-md-6">
                     <input type="email" id="email" class="form-control" ng-model="people.email"  required>
@@ -37,7 +38,7 @@
         <div class="col-sm-6">
 
             <div class="form-group">
-                <label for="telephone" class="col-md-2">Telephone:</label>
+                <label for="telephone" class="col-md-2">{{ 'PHONE_NUMBER' | translate }}:</label>
 
                 <div class="col-md-6">
                     <input type="text" id="telephone" class="form-control" ng-model="people.telephone"  required>
@@ -46,7 +47,7 @@
 
 
             <div class="form-group">
-                <label for="adres" class="col-sm-2">Adres:</label>
+                <label for="adres" class="col-sm-2">{{ 'ADRES' | translate }}:</label>
 
                 <div class="col-md-6">
 
@@ -55,7 +56,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="date" class="col-md-2">Date:</label>
+                <label for="date" class="col-md-2">{{ 'DATE' | translate }}:</label>
                 <!--<div class="col-md-6">-->
                     <!--<input type="date" id="date" class="form-control" ng-model="people.date"  name="dupa" required>-->
                 <!--</div>-->
@@ -74,10 +75,10 @@
 
 
             <div class="form-group">
-                <label for="date" class="col-md-2">Range:</label>
+                <label for="date" class="col-md-2">{{ 'RANGE' | translate }}:</label>
                 <div class="col-md-6">
                     <select class="form-control" ng-change="unitChanged()" ng-model="people.range" required>
-                        <option value="">---Please select---</option>
+                        <option value="">---{{ 'PLEASE_SELECT' | translate }}---</option>
                         <option ng-selected="data.unit == item.id" ng-repeat="item in select" ng-value="item.id">{{item.name}}</option>
                     </select>
 
@@ -86,7 +87,7 @@
             <div class="form-group button-image">
                 <div class=" col-md-offset-2 col-md-10">
                 <div class= "button btn btn-danger" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-                     ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select image</div>
+                     ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">{{ 'SELECT_IMAGE' | translate }}</div>
                     <span class="selected-file">{{file.name}}</span>
                 <!--<input type="text" id="adres" class="form-control" ng-model="people.adres">-->
             </div>
@@ -95,7 +96,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" value="Add Contact" ng-disabled="registerpeople.$invalid">
+                    <input type="submit" class="btn btn-primary" value="{{ 'ADD_CONTACT' | translate }}" ng-disabled="registerpeople.$invalid">
                 </div>
             </div>
             </div>

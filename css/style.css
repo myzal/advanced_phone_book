@@ -288,3 +288,6 @@ ul.small-contacts li a:hover + div {
     font-size: 18px;
     text-transform: uppercase;
 }
+.language-select{
+    float:right;
+}

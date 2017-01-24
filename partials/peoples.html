@@ -1,13 +1,13 @@
 <div class="col-xs-12">
-    <input type="text" class="search-contact" ng-model="nameFilter" placeholder="Search contact"/>
+    <input type="text" class="search-contact" ng-model="nameFilter" placeholder="{{ 'SEARCH_CONTACT' | translate }}"/>
     <table class="contact-table">
         <tr class="top-tr">
             <td>ID</td>
             <td>Image</td>
-            <td ng-click="standardOrder('name')">Name<span class="glyphicon glyphicon-menu-down"></span></td>
-            <td ng-click="standardOrder('surname')">Surname<span class="glyphicon glyphicon-menu-down"></span></td>
-            <td>Phone number</td>
-            <td class="adres-hide">Adres</td>
+            <td ng-click="standardOrder('name')">{{ 'NAME' | translate }}<span class="glyphicon glyphicon-menu-down"></span></td>
+            <td ng-click="standardOrder('surname')">{{ 'SURNAME' | translate }}<span class="glyphicon glyphicon-menu-down"></span></td>
+            <td>{{ 'PHONE_NUMBER' | translate }}</td>
+            <td class="adres-hide">{{ 'ADRES' | translate }}</td>
         </tr>
         <tr ng-repeat="people in bookList | orderBy: orderByData | filter: searchPeople">
 
@@ -19,8 +19,8 @@
             <td>{{people.telephone}}</td>
             <td class="adres-hide">{{people.adres}}</td>
             <td>
-                <a href="#/peoples/{{$index + 1}}" class="btn btn-default btn-sm">Show</a>
-                <button class="btn btn-danger btn-sm" ng-click="delete($index)">Remove</button>
+                <a href="#/peoples/{{$index + 1}}" class="btn btn-default btn-sm">{{ 'SHOW' | translate }}</a>
+                <button class="btn btn-danger btn-sm" ng-click="delete($index)">{{ 'REMOVE' | translate }}</button>
             </td>
         </tr>
 

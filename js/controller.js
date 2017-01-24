@@ -8,7 +8,7 @@
 angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFileUpload', 'ui.calendar', 'ui.bootstrap'])
 
     /* Controller  bookController*/
-    .controller('bookController', function ($scope, bookList, $location) {
+    .controller('bookController', function ($scope, bookList, $location,$translate) {
         $scope.bookList = bookList.get();
 
 
@@ -28,7 +28,11 @@ angular.module('telephoneBookApp.controllers', ['ngRoute', 'ngSanitize', 'ngFile
 
         $scope.activePage = function (path) {
             return (path == $location.path()) ? 'active' : '';
-        }
+        };
+        $scope.changeLanguage = function (langKey) {
+            $translate.use(langKey);
+        };
+
     })
 
     /* Controller  newPeople */

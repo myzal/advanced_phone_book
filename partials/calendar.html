@@ -4,21 +4,22 @@
         </div>
         <div class="col-md-3">
             <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
-                <h2 style="margin-top:0px"> Selected Birthday:</h2>
+                <!--<h2 style="margin-top:0px"> Selected Birthday:</h2>-->
+                <h2 style="margin-top:0px"> {{ 'SELECTED_BIRTHDAY' | translate }}:</h2>
                 <h3 style="color:#A9A50E">{{SelectedEvent.title}} {{SelectedEvent.surname}}</h3>
-                <p>Adres: {{SelectedEvent.adres}}</p>
-                <p>Phone: {{SelectedEvent.phone}}</p>
-                <p>Email: {{SelectedEvent.email}}</p>
+                <p>{{ 'ADRES' | translate }}: {{SelectedEvent.adres}}</p>
+                <p>{{ 'PHONE_NUMBER' | translate }}: {{SelectedEvent.phone}}</p>
+                <p>{{ 'EMAIL' | translate }}: {{SelectedEvent.email}}</p>
             </div>
         </div>
     </div>
 <div class="row">
     <div class="col-md-offset-2 col-md-10">
-        <div class="legend">Legend:</div>
-        <span class="square green">Friends</span>
-        <span class="square blue">Family</span>
-        <span class="square violet">Colleagues</span>
-        <span class="square red">Others</span>
+        <div class="legend">{{ 'LEGEND' | translate }}:</div>
+        <span class="square green"> {{ 'FRIENDS' | translate }}</span>
+        <span class="square blue"> {{ 'FAMILY' | translate }}</span>
+        <span class="square violet">  {{ 'COLLEGUES' | translate }} </span>
+        <span class="square red"> {{ 'OTHERS' | translate }}</span>
     </div>
 </div>
 
