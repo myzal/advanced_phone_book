@@ -62,7 +62,7 @@
                 <h3>{{ 'YOUR_CONTACTS' | translate }}</h3>
                 <ul class="small-contacts list-unstyled">
                     <li ng-repeat="people in bookList">
-                        <a href="#/peoples/{{$index + 1}}">
+                        <a href="#/people/{{$index + 1}}">
                             <img class="people-small" ng-src="../telephone-book/images/{{people.file_name}}"/>
                             {{(people.name)}} {{people.surname}}
                         </a>

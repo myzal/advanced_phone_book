@@ -8,7 +8,7 @@ angular.module('telephoneBookApp', ['telephoneBookApp.services', 'telephoneBookA
         $routeProvider.
             when("/", {
                 controller: 'bookController',
-                templateUrl: 'partials/peoples.html'
+                templateUrl: 'partials/people.html'
 
             })
 
@@ -17,7 +17,7 @@ angular.module('telephoneBookApp', ['telephoneBookApp.services', 'telephoneBookA
                 templateUrl: 'partials/newPeople.html'
 
             })
-            .when("/peoples/:id", {
+            .when("/people/:id", {
                 controller: 'showPeople',
                 templateUrl: 'partials/showPeople.html'
             })

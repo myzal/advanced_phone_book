@@ -1,4 +1,4 @@
-# Angular web-application advanced phone book (porfolio)
+# Angular web-application advanced phone book (portfolio)
 
 
 

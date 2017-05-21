@@ -19,7 +19,7 @@
             <td>{{people.telephone}}</td>
             <td class="adres-hide">{{people.adres}}</td>
             <td>
-                <a href="#/peoples/{{$index + 1}}" class="btn btn-default btn-sm">{{ 'SHOW' | translate }}</a>
+                <a href="#/people/{{$index + 1}}" class="btn btn-default btn-sm">{{ 'SHOW' | translate }}</a>
                 <button class="btn btn-danger btn-sm" ng-click="delete($index)">{{ 'REMOVE' | translate }}</button>
             </td>
         </tr>
